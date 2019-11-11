@@ -58,6 +58,30 @@ public getByUserJson(id, userdata) {
     });
 }
 
+public putByUserJson(id, userdata) {
+  const userid = 1;
+  const urlTestMaria = 'https://my-json-server.typicode.com/volkz/technical-form/users/';
+  this.httpClient.get(urlTestMaria+userid).subscribe((userdata)=>{
+    console.log(userdata.name);
+    this.form.setValue(
+      {
+        name: userdata.name,
+        surname: userdata.surname,
+        email: userdata.email,
+        genero: userdata.gender,
+        password: userdata.password,
+        identification: userdata.identification,
+        document_type : userdata.document_type,
+        datedd : '',
+        datemm : '',
+        dateyyyy :'',
+        password : userdata.password,
+        repassword : userdata.password,
+        reemail : userdata.email
+      });
+    });
+  }
+
 
 
 //aádir valores por defecto
