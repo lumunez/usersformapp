@@ -1,0 +1,152 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+      <h1 class="bd-title bd-lead" id="content">Tus datos personales</h1>
+          <div class="row flex-xl-nowrap">
+            <div class="container">
+              <form [formGroup]="angForm" novalidate>
+
+                <div class="row">
+                  <!-- app.0.form.name -->
+                  <div class="col">
+                    <div class="form-group">
+                        <input placeholder="Name" class="form-control" formControlName="name" type="text">
+                    </div>
+                    <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+                        <div *ngIf="angForm.controls['name'].errors.required">
+                          Name is required.
+                        </div>
+                    </div>
+                  </div>
+
+                  <!-- app.0.form.surname -->
+                  <div class="col">
+                    <div class="form-group">
+                        <input placeholder="Surname" class="form-control" formControlName="surname" type="text">
+                    </div>
+                    <div *ngIf="angForm.controls['surname'].invalid && (angForm.controls['surname'].dirty || angForm.controls['surname'].touched)" class="alert alert-danger">
+                        <div *ngIf="angForm.controls['surname'].errors.required">
+                          Surname is required.
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        Fecha de nacimiento
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- app.0.form.data.dd -->
+                      <div class="col">
+                        <div class="form-group">
+                            <input placeholder="Día" class="form-control" formControlName="datedd" type="text">
+                        </div>
+                      </div>
+                      <!-- app.0.form.data.mm -->
+                      <div class="col">
+                        <div class="form-group">
+                            <input placeholder="Mes" class="form-control" formControlName="datemm" type="text">
+                        </div>
+                      </div>
+                      <!-- app.0.form.data.yyyy -->
+                      <div class="col">
+                        <div class="form-group">
+                            <input placeholder="Año" class="form-control" formControlName="dateyyyy" type="text">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col">
+                    <div class="row">
+                      <div class="col">
+                        Documento identificativo
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- app.0.form.document_type -->
+                      <div class="col">
+                        <div class="form-group">
+                            <select class="form-control browser-default custom-select select-app-maria" formControlName="document_type" placeholder="d.ff">
+                              <option hidden value="" disabled selected>-</option>
+                              <option *ngFor="let item of optionTypeDocumentSelecteditemsList" ng-model="optionTypeDocumentSelected" value="{{item.value}}" (change)="onItemTypeChange(item)">
+                                {{item.name}}
+                              </option>
+                            </select>
+                        </div>
+                      </div>
+
+                      <!-- app.0.form.identification -->
+                      <div class="col">
+                        <div class="form-group">
+                            <input [formControl]="formControl" placeholder="Identification" class="form-control" formControlName="identification" type="text">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col">
+                  <div class="row">
+                    <div class="col">
+                      Género
+                    </div>
+                  </div>
+                  <div class="row">
+                    <!-- app.0.form.document_type -->
+                    <div class="col">
+                      <div class="form-group">
+
+                      </div>
+                      <!-- Default inline 1-->
+
+                    </div>
+
+                    <!-- app.0.form.identification -->
+                    <div class="col">
+                      <div class="form-group">
+                          <input placeholder="Identification" class="form-control" formControlName="identification" type="text">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col justify-content-right">
+                  <button type="submit" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success"> Modificar </button>
+                </div>
+
+
+
+              </form>
+
+
+              <div class="acciones">
+                <div class="row">
+                  <div class="m-t-1">
+                  	<button class="btn btn-primary" (click)="doGET()">GET</button>
+                  	<button class="btn btn-primary" (click)="doPOST()">POST</button>
+                  	<button class="btn btn-primary" (click)="doPUT()">PUT</button>
+                  	<button class="btn btn-primary" (click)="doDELETE()">DELETE</button>
+                	</div>
+                </div>
+              </div>
+
+              
+              <div class="row">
+                <!-- app.0.form.data.json -->
+                <div class="col">
+                  <p class="bd-lead"><strong>Form value: </strong>{{ angForm.value | json }}</p>
+                  <p class="bd-lead"><strong>StatusForm: </strong>{{ angForm.status | json }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </main>
+  </div>
+</div>
